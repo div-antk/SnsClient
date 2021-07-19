@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="SnsClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Vc-Bq-wgw">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4hU-B6-yaq">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="" image="person.fill" catalog="system" id="XLO-8T-pwl"/>
+                                    <tabBarItem title="" image="pencil" catalog="system" id="qC1-P0-pYD"/>
+                                </items>
+                            </tabBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4hU-B6-yaq" firstAttribute="top" secondItem="9Vc-Bq-wgw" secondAttribute="bottom" id="7Mh-rU-edY"/>
+                            <constraint firstItem="4hU-B6-yaq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="JEc-He-WFr"/>
+                            <constraint firstItem="9Vc-Bq-wgw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JTD-tn-Nmf"/>
+                            <constraint firstItem="9Vc-Bq-wgw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ac3-Ru-iTh"/>
+                            <constraint firstItem="4hU-B6-yaq" firstAttribute="top" secondItem="9Vc-Bq-wgw" secondAttribute="bottom" id="am2-EN-4ZS"/>
+                            <constraint firstItem="4hU-B6-yaq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cc6-Vm-are"/>
+                            <constraint firstItem="4hU-B6-yaq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="q5x-Zs-aFa"/>
+                            <constraint firstItem="9Vc-Bq-wgw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="viZ-7a-sXL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5.7971014492753632" y="39.508928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
