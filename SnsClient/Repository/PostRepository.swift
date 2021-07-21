@@ -10,17 +10,17 @@ import Moya
 import RxSwift
 
 final class PostRepository {
-    private static let apiProvider = MoyaProvider<[SnsAPI]>()
+    private static let apiProvider = MoyaProvider<SnsAPI>()
     private static let disposeBag = DisposeBag()
 }
 
 extension PostRepository {
     
-    private func getAllPosts() -> Observable<[TextResponse]> {
+    static func getAllPosts() -> Observable<[Post]> {
         return apiProvider.rx.request(.posts)
             .map { response in
                 let decoder = JSONDecoder()
-                return try decoder.decode([TextResponse].self, from: response)
-            }
+                return try decoder.decode([Post].self, from: response.data)
+            }.asObservable()
     }
 }
