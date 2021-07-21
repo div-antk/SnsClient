@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B10A34426A868D2004031D0 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B10A34326A868D2004031D0 /* PostViewModel.swift */; };
 		3B542EEF26A5B06400BFFE6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B542EEE26A5B06400BFFE6F /* AppDelegate.swift */; };
 		3B542EF126A5B06400BFFE6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B542EF026A5B06400BFFE6F /* SceneDelegate.swift */; };
 		3B542EF326A5B06400BFFE6F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B542EF226A5B06400BFFE6F /* MainViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B10A34326A868D2004031D0 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		3B542EEB26A5B06300BFFE6F /* SnsClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnsClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B542EEE26A5B06400BFFE6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B542EF026A5B06400BFFE6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B10A34226A868B0004031D0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3B10A34326A868D2004031D0 /* PostViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		3B542EE226A5B06300BFFE6F = {
 			isa = PBXGroup;
 			children = (
@@ -73,11 +83,12 @@
 		3B542EED26A5B06300BFFE6F /* SnsClient */ = {
 			isa = PBXGroup;
 			children = (
-				3B542F1D26A5BFBA00BFFE6F /* Entity */,
 				3B542EEE26A5B06400BFFE6F /* AppDelegate.swift */,
-				3B542F2426A708AD00BFFE6F /* Repository */,
 				3B542EF026A5B06400BFFE6F /* SceneDelegate.swift */,
+				3B542F1D26A5BFBA00BFFE6F /* Entity */,
+				3B542F2426A708AD00BFFE6F /* Repository */,
 				3B542F1C26A5BE8700BFFE6F /* View */,
+				3B10A34226A868B0004031D0 /* ViewModel */,
 				3B542F2126A705E400BFFE6F /* SnsAPI.swift */,
 				3B542EF726A5B06800BFFE6F /* Assets.xcassets */,
 				3B542EF926A5B06800BFFE6F /* LaunchScreen.storyboard */,
@@ -245,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B10A34426A868D2004031D0 /* PostViewModel.swift in Sources */,
 				3B542EF326A5B06400BFFE6F /* MainViewController.swift in Sources */,
 				3B542F1F26A5BFC800BFFE6F /* Text.swift in Sources */,
 				3B542F1826A5BD1D00BFFE6F /* PostTableViewCell.swift in Sources */,
