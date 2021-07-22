@@ -31,25 +31,25 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
         
         postViewModel = PostViewModel()
         
-//        postViewModel.output.posts
-//            .asObservable().subscribe { [weak self] in
-//                self?.posts = $0.element
-//                self?.tableView.reloadData()
-//            }.disposed(by: disposeBag)
+        postViewModel.output.posts
+            .asObservable().subscribe { [weak self] in
+                self?.posts = $0.element
+                self?.tableView.reloadData()
+            }.disposed(by: disposeBag)
     }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return posts?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.reusableIdentifier, for: indexPath) as! PostTableViewCell
-//        cell.postLabel?.text = posts?.text
-//        cell.timeLabel?.text = posts?._created_at
+        cell.postLabel?.text = posts?[indexPath.row].text
+        cell.timeLabel?.text = posts?[indexPath.row]._created_at
         
         return cell
     }
