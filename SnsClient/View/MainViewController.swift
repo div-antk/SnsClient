@@ -35,10 +35,11 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
         
         postViewModel.output.posts
             .asObservable().subscribe { [weak self] in
-                self?.posts = $0.element
+                self?.posts = $0.element?.reversed()
                 self?.tableView.reloadData()
             }.disposed(by: disposeBag)
     }
+
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -48,7 +49,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+                
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.reusableIdentifier, for: indexPath) as! PostTableViewCell
         cell.postLabel?.text = posts?[indexPath.row].text
         cell.timeLabel?.text = posts?[indexPath.row]._created_at
