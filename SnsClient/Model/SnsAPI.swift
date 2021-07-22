@@ -15,7 +15,7 @@ enum SnsAPI {
 extension SnsAPI: TargetType {
     
     var baseURL: URL {
-        return URL(string: "https://versatileapi.herokuapp.com/api/")!
+        return URL(string: "https://versatileapi.herokuapp.com/api")!
     }
     
     var path: String {
@@ -45,10 +45,6 @@ extension SnsAPI: TargetType {
     }
     
     var headers: [String : String]? {
-        ["Content-Type": "application/json"]
-    }
-    
-    var validationType: ValidationType {
-        return .successCodes
+        return nil
     }
 }

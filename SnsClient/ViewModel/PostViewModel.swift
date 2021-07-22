@@ -31,6 +31,7 @@ class PostViewModel: PostViewModelOutputs {
         
         PostRepository.getAllPosts()
             .subscribe(onNext: { response in
+                print("(´・ω・｀)", response)
                 _posts.accept(response)
             }).disposed(by: disposeBag)
     }
