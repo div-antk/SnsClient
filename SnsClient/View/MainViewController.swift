@@ -26,6 +26,8 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.estimatedRowHeight = 50
+        
         let nib = UINib(nibName: PostTableViewCell.reusableIdentifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PostTableViewCell.reusableIdentifier)
         
