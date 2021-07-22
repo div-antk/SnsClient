@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pS1-kc-EMo">
-                        <rect key="frame" x="16" y="8" width="198" height="60"/>
+                        <rect key="frame" x="16" y="16" width="198" height="52"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="pS1-kc-EMo" secondAttribute="trailing" constant="16" id="B47-Ya-jJL"/>
-                    <constraint firstItem="pS1-kc-EMo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="BmF-F1-SjM"/>
+                    <constraint firstItem="pS1-kc-EMo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="BmF-F1-SjM"/>
                     <constraint firstAttribute="trailing" secondItem="64F-fm-fWl" secondAttribute="trailing" constant="16" id="Jcp-0h-uxJ"/>
                     <constraint firstItem="64F-fm-fWl" firstAttribute="centerY" secondItem="Jvg-DE-ETt" secondAttribute="centerY" id="LRI-1j-74c"/>
                     <constraint firstItem="64F-fm-fWl" firstAttribute="top" secondItem="pS1-kc-EMo" secondAttribute="bottom" constant="8" id="R1e-Ya-KO2"/>
