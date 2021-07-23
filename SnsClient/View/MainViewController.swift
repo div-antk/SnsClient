@@ -12,7 +12,7 @@ import Instantiate
 import InstantiateStandard
 
 class MainViewController: UIViewController, StoryboardInstantiatable {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     private let disposeBag = DisposeBag()
@@ -28,9 +28,12 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
         
         tableView.estimatedRowHeight = 50
         
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(onRefresh(_:)), for: .valueChanged)
+        
         let nib = UINib(nibName: PostTableViewCell.reusableIdentifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PostTableViewCell.reusableIdentifier)
-        
+
         postViewModel = PostViewModel()
         
         postViewModel.output.posts
@@ -38,6 +41,12 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
                 self?.posts = $0.element?.reversed()
                 self?.tableView.reloadData()
             }.disposed(by: disposeBag)
+    }
+    
+    @objc private func onRefresh(_ sender: AnyObject) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.tableView.refreshControl?.endRefreshing()
+        }
     }
 }
 
@@ -48,7 +57,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.reusableIdentifier, for: indexPath) as! PostTableViewCell
         cell.postLabel?.text = posts?[indexPath.row].text
         

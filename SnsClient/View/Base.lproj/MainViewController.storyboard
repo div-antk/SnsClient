@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Vc-Bq-wgw">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="779"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="735"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4hU-B6-yaq">
@@ -33,9 +33,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4hU-B6-yaq" firstAttribute="top" secondItem="9Vc-Bq-wgw" secondAttribute="bottom" id="7Mh-rU-edY"/>
+                            <constraint firstItem="9Vc-Bq-wgw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BuU-jL-yL5"/>
                             <constraint firstItem="4hU-B6-yaq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="JEc-He-WFr"/>
                             <constraint firstItem="9Vc-Bq-wgw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JTD-tn-Nmf"/>
-                            <constraint firstItem="9Vc-Bq-wgw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ac3-Ru-iTh"/>
                             <constraint firstItem="4hU-B6-yaq" firstAttribute="top" secondItem="9Vc-Bq-wgw" secondAttribute="bottom" id="am2-EN-4ZS"/>
                             <constraint firstItem="4hU-B6-yaq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cc6-Vm-are"/>
                             <constraint firstItem="4hU-B6-yaq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="q5x-Zs-aFa"/>
