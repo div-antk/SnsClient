@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B10A34426A868D2004031D0 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B10A34326A868D2004031D0 /* PostViewModel.swift */; };
+		3B25465A26AA930B00963E55 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B25465926AA930B00963E55 /* DateUtil.swift */; };
 		3B542EEF26A5B06400BFFE6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B542EEE26A5B06400BFFE6F /* AppDelegate.swift */; };
 		3B542EF126A5B06400BFFE6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B542EF026A5B06400BFFE6F /* SceneDelegate.swift */; };
 		3B542EF326A5B06400BFFE6F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B542EF226A5B06400BFFE6F /* MainViewController.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		3B10A34326A868D2004031D0 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		3B25465926AA930B00963E55 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		3B542EEB26A5B06300BFFE6F /* SnsClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnsClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B542EEE26A5B06400BFFE6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B542EF026A5B06400BFFE6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				3B542EEE26A5B06400BFFE6F /* AppDelegate.swift */,
 				3B542EF026A5B06400BFFE6F /* SceneDelegate.swift */,
+				3B25465926AA930B00963E55 /* DateUtil.swift */,
 				3B542F1D26A5BFBA00BFFE6F /* Entity */,
 				3B542F2426A708AD00BFFE6F /* Repository */,
 				3B542F1C26A5BE8700BFFE6F /* View */,
@@ -270,6 +273,7 @@
 				3B542F1826A5BD1D00BFFE6F /* PostTableViewCell.swift in Sources */,
 				3B542F2626A70BB800BFFE6F /* PostRepository.swift in Sources */,
 				3B542EEF26A5B06400BFFE6F /* AppDelegate.swift in Sources */,
+				3B25465A26AA930B00963E55 /* DateUtil.swift in Sources */,
 				3B542EF126A5B06400BFFE6F /* SceneDelegate.swift in Sources */,
 				3B542F2226A705E500BFFE6F /* SnsAPI.swift in Sources */,
 			);
