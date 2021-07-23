@@ -52,14 +52,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.reusableIdentifier, for: indexPath) as! PostTableViewCell
         cell.postLabel?.text = posts?[indexPath.row].text
         
-        
         if let createdAt = posts?[indexPath.row]._created_at {
-            print("kkkkk", createdAt)
-            let formatter = ISO8601DateFormatter()
-            let date = formatter.date(from: createdAt)
-            print("aaa", date)
-//            let date = DateUtil.dateFromString(string: createdAt, format: "yyyy/MM/dd HH:mm:ss Z")
-//            cell.timeLabel.text = DateUtil.stringFromDate(date: date, format: "yyyy年MM月dd日 HH時mm分ss秒")
+            let date = DateUtil.dateFromString(string: createdAt)
+            cell.timeLabel.text = DateUtil.stringFromDate(date: date, format: "yyyy年MM月dd日 HH時mm分ss秒")
         }
         
         return cell
