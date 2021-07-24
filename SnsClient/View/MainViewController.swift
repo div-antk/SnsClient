@@ -29,24 +29,29 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
         tableView.estimatedRowHeight = 50
         
         tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(onRefresh(_:)), for: .valueChanged)
+        tableView.refreshControl?.addTarget(self, action: #selector(MainViewController.refresh), for: .valueChanged)
         
         let nib = UINib(nibName: PostTableViewCell.reusableIdentifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PostTableViewCell.reusableIdentifier)
 
         postViewModel = PostViewModel()
-        
+        getPostData()
+    }
+    
+    @objc func refresh(sender: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.getPostData()
+            print("(´・ω・｀)")
+            self?.tableView.refreshControl?.endRefreshing()
+        }
+    }
+    
+    func getPostData() {
         postViewModel.output.posts
             .asObservable().subscribe { [weak self] in
                 self?.posts = $0.element?.reversed()
                 self?.tableView.reloadData()
             }.disposed(by: disposeBag)
-    }
-    
-    @objc private func onRefresh(_ sender: AnyObject) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-            self?.tableView.refreshControl?.endRefreshing()
-        }
     }
 }
 
