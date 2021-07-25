@@ -12,7 +12,14 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let homeVC = MainViewController()
         let userVC = UIViewController()
         let postVC = UIViewController()
+        
+        setViewControllers([
+            homeVC,
+            postVC,
+            userVC
+        ], animated: true)
     }
 }

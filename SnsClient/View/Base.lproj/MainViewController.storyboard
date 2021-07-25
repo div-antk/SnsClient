@@ -17,28 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Vc-Bq-wgw">
-                                <rect key="frame" x="0.0" y="44" width="414" height="735"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4hU-B6-yaq">
-                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="" image="person.fill" catalog="system" id="XLO-8T-pwl"/>
-                                    <tabBarItem title="" image="pencil" catalog="system" id="qC1-P0-pYD"/>
-                                </items>
-                            </tabBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="4hU-B6-yaq" firstAttribute="top" secondItem="9Vc-Bq-wgw" secondAttribute="bottom" id="7Mh-rU-edY"/>
                             <constraint firstItem="9Vc-Bq-wgw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BuU-jL-yL5"/>
-                            <constraint firstItem="4hU-B6-yaq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="JEc-He-WFr"/>
                             <constraint firstItem="9Vc-Bq-wgw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JTD-tn-Nmf"/>
-                            <constraint firstItem="4hU-B6-yaq" firstAttribute="top" secondItem="9Vc-Bq-wgw" secondAttribute="bottom" id="am2-EN-4ZS"/>
-                            <constraint firstItem="4hU-B6-yaq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cc6-Vm-are"/>
-                            <constraint firstItem="4hU-B6-yaq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="q5x-Zs-aFa"/>
+                            <constraint firstAttribute="bottom" secondItem="9Vc-Bq-wgw" secondAttribute="bottom" id="XUV-nX-HL8"/>
                             <constraint firstItem="9Vc-Bq-wgw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="viZ-7a-sXL"/>
                         </constraints>
                     </view>
@@ -52,8 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencil" catalog="system" width="128" height="113"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
