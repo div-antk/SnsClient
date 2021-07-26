@@ -8,18 +8,29 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-
+    
+    var firstVC: UIViewController?
+    var secondVC: UIViewController?
+    var thirdVC: UIViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let homeVC = MainViewController()
-        let userVC = UIViewController()
-        let postVC = UIViewController()
         
-        setViewControllers([
-            homeVC,
-            postVC,
-            userVC
-        ], animated: true)
+        var vcs: [UIViewController] = []
+        
+        firstVC = MainViewController.instantiate()
+        secondVC = UIViewController()
+        thirdVC = UIViewController()
+        
+        guard let firstVC = firstVC,
+              let secondVC = secondVC,
+              let thirdVC = thirdVC
+        else { return }
+        
+        vcs.append(firstVC)
+        vcs.append(secondVC)
+        vcs.append(thirdVC)
+        
+        self.setViewControllers(vcs, animated: true)
     }
 }
