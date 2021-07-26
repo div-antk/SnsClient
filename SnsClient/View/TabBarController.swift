@@ -33,4 +33,18 @@ class TabBarController: UITabBarController {
         
         self.setViewControllers(vcs, animated: true)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let firstVC = firstVC,
+              let secondVC = secondVC,
+              let thirdVC = thirdVC
+        else { return }
+        
+        firstVC.tabBarItem = UITabBarItem(title: "ホーム", image: UIImage(systemName: "house.fill"), tag: 0)
+        secondVC.tabBarItem = UITabBarItem(title: "投稿", image: UIImage(systemName: "square.and.pencil"), tag: 0)
+        thirdVC.tabBarItem = UITabBarItem(title: "ユーザ情報", image: UIImage(systemName: "person.fill"), tag: 0)
+        
+    }
 }
