@@ -10,4 +10,5 @@ target 'SnsClient' do
   pod 'RxCocoa'
   pod 'Instantiate'
   pod 'InstantiateStandard'
+  pod 'PKHUD', '~> 5.0'
 end
