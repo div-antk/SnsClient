@@ -19,7 +19,7 @@ class TabBarController: UITabBarController {
         var vcs: [UIViewController] = []
         
         firstVC = MainViewController.instantiate()
-        secondVC = UIViewController()
+        secondVC = PostViewController.instantiate()
         thirdVC = UIViewController()
         
         guard let firstVC = firstVC,

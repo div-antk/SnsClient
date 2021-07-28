@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MvX-WZ-eQn">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Post View Controller-->
+        <scene sceneID="5z3-Nx-ImR">
+            <objects>
+                <viewController id="MvX-WZ-eQn" customClass="PostViewController" customModule="SnsClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="piK-22-3St">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XKK-5B-Jit">
+                                <rect key="frame" x="32" y="408" width="350" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrO-eG-8BG">
+                                        <rect key="frame" x="161" y="52" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="BeG-GL-h1h"/>
+                                            <constraint firstAttribute="height" constant="28" id="Cp7-Au-OXg"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="square.and.pencil" catalog="system"/>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="5Lo-W3-rp3">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="24"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="NeZ-Hr-XCC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="QrO-eG-8BG" secondAttribute="bottom" id="0Nr-62-yip"/>
+                                    <constraint firstItem="QrO-eG-8BG" firstAttribute="top" secondItem="5Lo-W3-rp3" secondAttribute="bottom" constant="28" id="39W-Es-aOu"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Lo-W3-rp3" secondAttribute="trailing" id="7ch-GW-wne"/>
+                                    <constraint firstItem="QrO-eG-8BG" firstAttribute="centerX" secondItem="XKK-5B-Jit" secondAttribute="centerX" id="CPJ-MK-1td"/>
+                                    <constraint firstItem="5Lo-W3-rp3" firstAttribute="leading" secondItem="XKK-5B-Jit" secondAttribute="leading" id="FQf-OR-d0Q"/>
+                                    <constraint firstItem="5Lo-W3-rp3" firstAttribute="top" secondItem="XKK-5B-Jit" secondAttribute="top" id="Ti5-Mh-cAw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PmC-pl-IaV"/>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XKK-5B-Jit" firstAttribute="centerY" secondItem="piK-22-3St" secondAttribute="centerY" id="YkL-cI-N2M"/>
+                            <constraint firstItem="XKK-5B-Jit" firstAttribute="leading" secondItem="PmC-pl-IaV" secondAttribute="leading" constant="32" id="g90-ug-YSx"/>
+                            <constraint firstItem="PmC-pl-IaV" firstAttribute="trailing" secondItem="XKK-5B-Jit" secondAttribute="trailing" constant="32" id="mew-P3-1Z7"/>
+                            <constraint firstItem="XKK-5B-Jit" firstAttribute="centerX" secondItem="piK-22-3St" secondAttribute="centerX" id="xkr-jm-7gh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="postButton" destination="QrO-eG-8BG" id="JZZ-cI-1My"/>
+                        <outlet property="postTextField" destination="5Lo-W3-rp3" id="QWy-o3-o1Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aB2-D1-MYz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="301" y="91"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
+    </resources>
+</document>
