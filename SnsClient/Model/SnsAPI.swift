@@ -9,7 +9,8 @@ import Foundation
 import Moya
 
 enum SnsAPI {
-    case posts
+    case all
+    case postText(text: String)
 }
 
 extension SnsAPI: TargetType {
@@ -20,13 +21,20 @@ extension SnsAPI: TargetType {
     
     var path: String {
         switch self {
-        case .posts:
+        case .all:
             return "/text/all"
+        case .postText:
+            return "/text"
         }
     }
     
     var method: Moya.Method {
-        return Moya.Method.get
+        switch self {
+        case .all:
+            return .get
+        case .postText:
+            return .post
+        }
     }
     
     var sampleData: Data {
@@ -35,8 +43,10 @@ extension SnsAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .posts:
+        case .all:
             return .requestPlain
+        case .postText(let text):
+            return .requestParameters(parameters: ["text": text], encoding: URLEncoding.default)
         }
     }
     
