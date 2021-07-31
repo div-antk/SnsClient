@@ -23,25 +23,20 @@ extension PostRepository {
                 return try decoder.decode([Post].self, from: response.data)
             }.asObservable()
     }
-
-    static func postText() {
-        return apiProvider.rx.request(.postText(text: "text"))
-            { (result) in
-            switch result {
-            case let .success(response):
-                let jsonDecoder = 
-            }
-            }.asObservable()
-    }
     
-//    func imagePickerController(_ imagePicker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//            if let pickedImage = info[.originalImage] as? UIImage {
-//                ApiManager().request(Api.UploadFiles(caption: "テスト", filepath: pickedImage, fileName: "file")) { (response, error) in
-//                    if let res = response {
-//                        DEBUG.LOG(res)
-//                    }
-//                }
-//            }
-//            imagePicker.dismiss(animated: true, completion: nil)
-//        }
+//    static func postText() {
+//        return apiProvider.rx.request(.postText(text: "text"))
+//
+//    }
+    
+    //    func imagePickerController(_ imagePicker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    //            if let pickedImage = info[.originalImage] as? UIImage {
+    //                ApiManager().request(Api.UploadFiles(caption: "テスト", filepath: pickedImage, fileName: "file")) { (response, error) in
+    //                    if let res = response {
+    //                        DEBUG.LOG(res)
+    //                    }
+    //                }
+    //            }
+    //            imagePicker.dismiss(animated: true, completion: nil)
+    //        }
 }

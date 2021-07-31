@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import Instantiate
 import InstantiateStandard
+import PKHUD
 
 class MainViewController: UIViewController, StoryboardInstantiatable {
     
@@ -23,30 +24,35 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.estimatedRowHeight = 50
         
         tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(MainViewController.refresh), for: .valueChanged)
-        
+        tableView.refreshControl?.addTarget(self, action: #selector(MainViewController.refresh(sender:)), for: .valueChanged)
+
         let nib = UINib(nibName: PostTableViewCell.reusableIdentifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PostTableViewCell.reusableIdentifier)
 
-        postViewModel = PostViewModel()
+        // なぜか落ちる
+        // HUD.show(.progress)
         getPostData()
     }
     
     @objc func refresh(sender: UIRefreshControl) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self?.getPostData()
-            print("(´・ω・｀)")
             self?.tableView.refreshControl?.endRefreshing()
+            self?.tableView.reloadData()
         }
     }
     
     func getPostData() {
+        // HUD.hide()
+        postViewModel = PostViewModel()
+
         postViewModel.output.posts
             .asObservable().subscribe { [weak self] in
                 self?.posts = $0.element?.reversed()
