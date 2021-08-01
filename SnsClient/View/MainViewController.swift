@@ -32,12 +32,18 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
         
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(MainViewController.refresh(sender:)), for: .valueChanged)
-
+        
         let nib = UINib(nibName: PostTableViewCell.reusableIdentifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PostTableViewCell.reusableIdentifier)
-
-        // なぜか落ちる
-        // HUD.show(.progress)
+        
+        /*
+         「ルートVCではSwift UIApplication.shared.keyWindowがnilであるため、ビューを手動で指定するか、viewDidAppearにHUDを表示する必要がある」と説明しました。
+         とにかく、以前に試したことがなかった理由はありません。解決策は、show()メソッドを呼び出すときに引数を追加することでした。
+         */
+        
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show(onView: view)
+        //        HUD.show(.progress)
         getPostData()
     }
     
@@ -50,9 +56,9 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
     }
     
     func getPostData() {
-        // HUD.hide()
+        HUD.hide()
         postViewModel = PostViewModel()
-
+        
         postViewModel.output.posts
             .asObservable().subscribe { [weak self] in
                 self?.posts = $0.element?.reversed()
