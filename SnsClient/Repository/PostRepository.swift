@@ -24,7 +24,24 @@ extension PostRepository {
             }.asObservable()
     }
     
-//    static func postText() {
+    
+    
+    static func postText(text: String) -> () {
+        
+        apiProvider.rx.request(.postText(text: text))
+            .subscribe({ event in
+                switch event {
+                case .success(let response):
+                    do {
+                        let data = try JSONDecoder().decode(, from: response.data)
+                        
+                    }
+                
+                case .error(let error):
+                    <#code#>
+                }
+            })
+    }
 //        return apiProvider.rx.request(.postText(text: "text"))
 //
 //    }

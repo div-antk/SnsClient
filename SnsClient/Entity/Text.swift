@@ -11,3 +11,7 @@ public struct Post: Codable {
     let text: String
     let _created_at: String
 }
+
+//public struct PostText: Codable {
+//    let postText(text: String)
+//}
