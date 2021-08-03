@@ -11,7 +11,7 @@ import RxCocoa
 import Moya
 
 protocol PostViewModelOutputs {
-    var posts: Observable<[Post]> { get }
+    var posts: Observable<[Text]> { get }
 }
 
 protocol PostViewModelType {
@@ -20,13 +20,13 @@ protocol PostViewModelType {
 
 class PostViewModel: PostViewModelOutputs {
     
-    let posts: Observable<[Post]>
+    let posts: Observable<[Text]>
     
     private let disposeBag = DisposeBag()
     private let provider = MoyaProvider<SnsAPI>()
     
     init() {
-        let _posts = PublishRelay<[Post]>()
+        let _posts = PublishRelay<[Text]>()
         self.posts = _posts.asObservable()
         
         PostRepository.getAllPosts()

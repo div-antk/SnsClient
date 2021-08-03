@@ -19,7 +19,7 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
     private let disposeBag = DisposeBag()
     private var postViewModel: PostViewModel!
     
-    private var posts: [Post]?
+    private var posts: [Text]?
     
     override func viewDidLoad() {
         super.viewDidLoad()

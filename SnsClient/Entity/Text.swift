@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Post: Codable {
+public struct Text: Codable {
     let text: String
     let _created_at: String
 }
