@@ -24,36 +24,36 @@ extension PostRepository {
             }.asObservable()
     }
     
-    
-    
     static func postText(text: String) -> () {
-        
-        apiProvider.rx.request(.postText(text: text))
-            .subscribe({ event in
-                switch event {
-                case .success(let response):
-                    do {
-                        let data = try JSONDecoder().decode(, from: response.data)
-                        
-                    }
-                
-                case .error(let error):
-                    <#code#>
+        apiProvider.rx.request(.postText(text: "text"))
+            .map { response -> PostText? in
+                return try? JSONDecoder().decode(PostText.self, from: response.data)
+            }.subscribe(onSuccess: { response in
+                if let unwrappedResponse = response {
+                    print(unwrappedResponse)
+                } else {
+                    print("エラー")
                 }
+            }, onError: { error in
+                print(error)
             })
+            .disposed(by: disposeBag)
     }
-//        return apiProvider.rx.request(.postText(text: "text"))
-//
-//    }
     
-    //    func imagePickerController(_ imagePicker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    //            if let pickedImage = info[.originalImage] as? UIImage {
-    //                ApiManager().request(Api.UploadFiles(caption: "テスト", filepath: pickedImage, fileName: "file")) { (response, error) in
-    //                    if let res = response {
-    //                        DEBUG.LOG(res)
-    //                    }
-    //                }
-    //            }
-    //            imagePicker.dismiss(animated: true, completion: nil)
-    //        }
+//    static func postText(text: String) -> () {
+//
+//        apiProvider.rx.request(.postText(text: text))
+//            .subscribe({ event in
+//                switch event {
+//                case .success(let response):
+//                    do {
+//                        let data = try JSONDecoder().decode(PostText.self, from: response.data)
+//                        return data
+//                    }
+//                case .error(let error):
+//                    print(error)
+//                }
+//            })
+//    }
+
 }
