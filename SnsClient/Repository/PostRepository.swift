@@ -25,19 +25,26 @@ extension PostRepository {
     }
     
     static func postText(text: String) -> () {
-        apiProvider.rx.request(.postText(text: "text"))
+        apiProvider.rx.request(.postText(text: text))
             .map { response -> PostText? in
-                return try? JSONDecoder().decode(PostText.self, from: response.data)
-            }.subscribe(onSuccess: { response in
-                if let unwrappedResponse = response {
-                    print(unwrappedResponse)
-                } else {
-                    print("エラー")
-                }
-            }, onError: { error in
-                print(error)
-            })
-            .disposed(by: disposeBag)
+                let decoder = JSONDecoder()
+                return try? decoder.decode(PostText.self, from: response.data)
+            }.asObservable()
+    
+//    static func postText(text: String) -> () {
+//        apiProvider.rx.request(.postText(text: text))
+//            .map { response -> PostText? in
+//                return try? JSONDecoder().decode(PostText.self, from: response.data)
+//            }.subscribe(onSuccess: { response in
+//                if let unwrappedResponse = response {
+//                    print(unwrappedResponse)
+//                } else {
+//                    print("エラー")
+//                }
+//            }, onError: { error in
+//                print(error)
+//            })
+//            .disposed(by: disposeBag)
     }
     
 //    static func postText(text: String) -> () {

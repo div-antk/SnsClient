@@ -10,16 +10,22 @@ import RxSwift
 import RxCocoa
 import Moya
 
+protocol PostViewModelInputs {
+    var postText: AnyObserver<String> { get }
+}
+
 protocol PostViewModelOutputs {
     var posts: Observable<[Text]> { get }
 }
 
 protocol PostViewModelType {
+    var inputs: PostViewModelInputs { get }
     var output: PostViewModelOutputs { get }
 }
 
-class PostViewModel: PostViewModelOutputs {
+class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
     
+    let postText: AnyObserver<String>
     let posts: Observable<[Text]>
     
     private let disposeBag = DisposeBag()
@@ -29,13 +35,34 @@ class PostViewModel: PostViewModelOutputs {
         let _posts = PublishRelay<[Text]>()
         self.posts = _posts.asObservable()
         
+//        PostRepository.postText(text: "投稿する")
+//
+        let _postText = PublishRelay<String>()
+        self.postText = AnyObserver<String>() { event in
+            guard let text = event.element else { return }
+            
+            _postText.accept(text)
+        }
+        
         PostRepository.getAllPosts()
             .subscribe(onNext: { response in
                 _posts.accept(response)
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
+        
+        _postText
+            .flatMap { postText in
+                PostRepository.postText(text: "fff")
+            }
+            
+            
+    
+            
+            
     }
 }
 
 extension PostViewModel: PostViewModelType {
-    var output: PostViewModelOutputs { return self}
+    var inputs: PostViewModelInputs { return self }
+    var output: PostViewModelOutputs { return self }
 }
