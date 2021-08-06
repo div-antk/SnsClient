@@ -19,17 +19,30 @@ class PostViewController: UIViewController, StoryboardInstantiatable {
     private let disposeBag = DisposeBag()
     private var postViewModel: PostViewModel!
     
-    var textSubject = BehaviorRelay<String?>(value: "")
+    var textSubject = PublishSubject<String?>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        postTextField.rx.text.bind(to: textSubject)
+        // textをtextSubjectにbindする
+        postTextField.rx.text
+            .subscribe(onNext: { [weak self] text in
+                self?.textSubject = text
+            })
+            
             .disposed(by: disposeBag)
         
-        textSubject
-            .map { $0 }
-            .bind(to: postButton.rx.isEnabled)
-            .disposed(by: disposeBag)
+        postButton.rx.tap
+            .map { [weak self] in
+                return self?.textSubject
+            }
+            .bind(to: postViewModel.postText)
+            .d
+        
+//        textSubject
+//            .map { $0 }
+//            .bind(to: postButton.rx.isEnabled)
+//            .subscribe(onNext)
+////            .disposed(by: disposeBag)
     }
 }
