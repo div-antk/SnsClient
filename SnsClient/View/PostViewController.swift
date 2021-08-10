@@ -24,21 +24,22 @@ class PostViewController: UIViewController, StoryboardInstantiatable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // textをtextSubjectにbindする
-        postTextField.rx.text
-            .subscribe(onNext: { [weak self] text in
-                self?.textSubject = text
-            })
-            
+        // 後述
+        postViewModel = PostViewModel()
+        
+        // orEmptyというプロパティを使うとString?をStringに変換してくれる
+        postTextField.rx.text.orEmpty
+            // 前述でVMを初期化しないとnilになってしまう
+            .bind(to: postViewModel.inputs.postText)
             .disposed(by: disposeBag)
         
-        postButton.rx.tap
-            .map { [weak self] in
-                return self?.textSubject
-            }
-            .bind(to: postViewModel.postText)
-            .d
-        
+//        postButton.rx.tap
+//            .map { [weak self] in
+//                return self?.textSubject
+//            }
+//            .bind(to: postViewModel.postText)
+//            
+//        
 //        textSubject
 //            .map { $0 }
 //            .bind(to: postButton.rx.isEnabled)
