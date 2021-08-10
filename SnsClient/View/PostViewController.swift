@@ -19,8 +19,6 @@ class PostViewController: UIViewController, StoryboardInstantiatable {
     private let disposeBag = DisposeBag()
     private var postViewModel: PostViewModel!
     
-    var textSubject = PublishSubject<String?>()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,12 +31,11 @@ class PostViewController: UIViewController, StoryboardInstantiatable {
             .bind(to: postViewModel.inputs.postText)
             .disposed(by: disposeBag)
         
-//        postButton.rx.tap
-//            .map { [weak self] in
-//                return self?.textSubject
-//            }
-//            .bind(to: postViewModel.postText)
-//            
+        postButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.postViewModel.postpostText()
+            }).disposed(by: disposeBag)
+//
 //        
 //        textSubject
 //            .map { $0 }

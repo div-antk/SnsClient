@@ -42,8 +42,8 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
 //        PostRepository.postText(text: "投稿する")
 //
         let _postText = PublishRelay<String>()
-        
         self.postText = AnyObserver<String>() { event in
+            print(event)
             guard let text = event.element else { return }
             _postText.accept(text)
         }
@@ -53,16 +53,11 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
                 _posts.accept(response)
             })
             .disposed(by: disposeBag)
-        
-//        _postText
-//            .flatMap { postText in
-//                PostRepository.postText(text: "fff")
-//            }
-            
-            
+    }
     
-            
-            
+    func postpostText() {
+        print("(´・ω・｀)")
+        PostRepository.postText(text: "テスト送信すみません")
     }
 }
 

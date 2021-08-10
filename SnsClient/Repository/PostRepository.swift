@@ -27,6 +27,7 @@ extension PostRepository {
     static func postText(text: String) -> () {
         apiProvider.rx.request(.postText(text: text))
             .map { response -> PostText? in
+                print("(,,ﾟДﾟ)", response)
                 let decoder = JSONDecoder()
                 return try? decoder.decode(PostText.self, from: response.data)
             }.asObservable()
