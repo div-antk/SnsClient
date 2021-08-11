@@ -55,6 +55,6 @@ extension SnsAPI: TargetType {
     }
     
     var headers: [String : String]? {
-        return nil
+        ["Authorization": "HelloWorld"]
     }
 }

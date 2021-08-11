@@ -30,7 +30,17 @@ extension PostRepository {
                 print("(,,ﾟДﾟ)", response)
                 let decoder = JSONDecoder()
                 return try? decoder.decode(PostText.self, from: response.data)
-            }.asObservable()
+            }.subscribe(onSuccess: { response in
+                if let unwrappedResponse = response {
+                    print(unwrappedResponse)
+                } else {
+                    print("エラー")
+                }
+            }, onError: { error in
+                print(error)
+            }).disposed(by: disposeBag)
+            
+//            .asObservable()
     
 //    static func postText(text: String) -> () {
 //        apiProvider.rx.request(.postText(text: text))
