@@ -39,8 +39,6 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
         let _posts = PublishRelay<[Text]>()
         self.posts = _posts.asObservable()
         
-//        PostRepository.postText(text: "投稿する")
-//
         let _postText = PublishRelay<String>()
         self.postText = AnyObserver<String>() { event in
             print(event)
@@ -56,7 +54,6 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
     }
     
     func postpostText() {
-        print("(´・ω・｀)")
         PostRepository.postText(text: "テスト送信すみません")
     }
 }

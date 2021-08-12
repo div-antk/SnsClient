@@ -46,7 +46,10 @@ extension SnsAPI: TargetType {
         case .all:
             return .requestPlain
         case .postText(let text):
-            return .requestParameters(parameters: ["text": text], encoding: URLEncoding.default)
+            let jsonData = try! JSONSerialization.data(withJSONObject: [
+                "text": text
+            ], options: [])
+            return .requestCompositeData(bodyData: jsonData, urlParameters: [:])
         }
     }
     
