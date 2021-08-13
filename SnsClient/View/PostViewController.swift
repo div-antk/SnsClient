@@ -31,10 +31,17 @@ class PostViewController: UIViewController, StoryboardInstantiatable {
             .bind(to: postViewModel.inputs.postText)
             .disposed(by: disposeBag)
         
+//        postButton.rx.tap
+//            .subscribe(onNext: { [weak self] _ in
+//                self?.postViewModel.postpostText()
+//            }).disposed(by: disposeBag)
+        
         postButton.rx.tap
-            .subscribe(onNext: { [weak self] _ in
-                self?.postViewModel.postpostText()
-            }).disposed(by: disposeBag)
+            .subscribe(onNext: { [postViewModel] in
+//                postViewModel?.inputs.postText
+                
+            })
+        
 //
 //        
 //        textSubject

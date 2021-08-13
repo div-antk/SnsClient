@@ -54,6 +54,8 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
     }
     
     func postpostText() {
+        
+        print("(´・ω・｀)", )
         PostRepository.postText(text: "テスト送信すみません")
     }
 }
