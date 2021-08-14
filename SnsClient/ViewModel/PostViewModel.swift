@@ -12,6 +12,7 @@ import Moya
 
 protocol PostViewModelInputs {
     var postText: AnyObserver<String> { get }
+//    func postpostText()
 }
 
 protocol PostViewModelOutputs {
@@ -54,8 +55,8 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
     }
     
     func postpostText() {
-        
-        print("(´・ω・｀)", )
+
+        print("(´・ω・｀)" )
         PostRepository.postText(text: "テスト送信すみません")
     }
 }
