@@ -12,7 +12,7 @@ import Moya
 
 protocol PostViewModelInputs {
     var postText: AnyObserver<String> { get }
-    var onPostButton: PublishRelay<Void> { get }
+    var onPostButton: AnyObserver<Void> { get }
 }
 
 protocol PostViewModelOutputs {
@@ -28,7 +28,8 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
     
     // MARK: input
     let postText: AnyObserver<String>
-    var onPostButton: PublishRelay<Void>
+    let onPostButton: AnyObserver<Void>
+    private let onPostButtonStream = PublishSubject<Void>()
     
     // MARK: output
     let posts: Observable<[Text]>
@@ -54,9 +55,10 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
             })
             .disposed(by: disposeBag)
         
-        onPostButton.subscribe(onNext: {
-            PostRepository.postText(text: self.postText)
-        }).disposed(by: dis)
+        let state = onPostButtonStream.flatMapLatest { _ in
+            return PostRepository.postText(text: postText)
+        }
+        
     }
     
     func postpostText() {
