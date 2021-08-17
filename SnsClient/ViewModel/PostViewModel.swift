@@ -55,9 +55,12 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
             })
             .disposed(by: disposeBag)
         
-        let state = onPostButtonStream.flatMapLatest { _ in
-            return PostRepository.postText(text: postText)
-        }
+        let state = onPostButtonStream
+            .flatMapLatest { (postText) -> Observable<Void> in
+                return PostRepository.postText(text: postText)
+            }
+            
+            
         
     }
     
