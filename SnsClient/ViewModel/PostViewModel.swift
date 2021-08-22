@@ -12,7 +12,7 @@ import Moya
 
 protocol PostViewModelInputs {
     var postText: AnyObserver<String> { get }
-    var onPostButton: AnyObserver<Void> { get }
+    var onPostButton: PublishSubject<String> { get }
 }
 
 protocol PostViewModelOutputs {
@@ -28,8 +28,10 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
     
     // MARK: input
     let postText: AnyObserver<String>
-    let onPostButton: AnyObserver<Void>
-    private let onPostButtonStream = PublishSubject<Void>()
+//    let onPostButton: AnyObserver<Void>
+    let onPostButton = PublishSubject<String>()
+    
+    var event: Observable<String> { return onPostButton }
     
     // MARK: output
     let posts: Observable<[Text]>
@@ -44,7 +46,6 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
         
         let _postText = PublishRelay<String>()
         self.postText = AnyObserver<String>() { event in
-            print(event)
             guard let text = event.element else { return }
             _postText.accept(text)
         }
@@ -55,20 +56,30 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
             })
             .disposed(by: disposeBag)
         
-        let state = onPostButtonStream
-            .flatMapLatest { (postText) -> Observable<Void> in
-                return PostRepository.postText(text: postText)
-            }
+//        let state = onPostButtonStream
+//            .flatMapLatest { (postText) -> Observable<Void> in
+//                return PostRepository.postText(text: postText)
+//            }
             
+        onPostButton.subscribe(onNext: { postText in
+            print(postText)
+            PostRepository.postText(text: postText)
+        }).disposed(by: disposeBag)
             
         
     }
     
-    func postpostText() {
-
-        print("(´・ω・｀)" )
-        PostRepository.postText(text: "テスト送信すみません")
-    }
+//    func postpostText() {
+//        print("(´・ω・｀)" )
+////        onPostButtonStream.onNext(postText)
+//        onPostButtonStream.subscribe(onNext: { postText in
+//            PostRepository.postText(text: postText)
+//        }).disposed(by: disposeBag)
+//
+////        onPostButtonStream.onNext({ event in
+////            PostRepository.postText(text: event)
+////        })
+//    }
 }
 
 extension PostViewModel: PostViewModelType {

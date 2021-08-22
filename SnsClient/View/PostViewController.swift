@@ -38,9 +38,8 @@ class PostViewController: UIViewController, StoryboardInstantiatable {
         
         postButton.rx.tap
             .subscribe(onNext: { [postViewModel] in
-//                postViewModel?.inputs.postText
-                
-            })
+                postViewModel?.inputs.onPostButton
+            }).disposed(by: disposeBag)
         
 //
 //        
