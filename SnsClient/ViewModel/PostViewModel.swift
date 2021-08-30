@@ -53,38 +53,16 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
             })
             .disposed(by: disposeBag)
         
-        var event: Observable<String> { return
-            onPostButton.flatMap(self.postText) { event in
-                PostRepository.postText(text: event)
-            }
-        }
-
-        
         let onPostButton = PublishRelay<Void>()
-        onPostButton.withLatestFrom(postText) {
-            PostRepository.postText(text: postText)
+        self.onPostButton = AnyObserver<Void>() {_ in 
+            return
         }
+        onPostButton.withLatestFrom(_postText)
+            .subscribe(onNext: { text in
+                PostRepository.postText(text: text)
+            }).disposed(by: disposeBag)
        
-        
-        onPostButton.subscribe(onNext: { postText in
-            print(postText)
-            PostRepository.postText(text: postText)
-        }).disposed(by: disposeBag)
-            
-        
     }
-    
-//    func postpostText() {
-//        print("(´・ω・｀)" )
-////        onPostButtonStream.onNext(postText)
-//        onPostButtonStream.subscribe(onNext: { postText in
-//            PostRepository.postText(text: postText)
-//        }).disposed(by: disposeBag)
-//
-////        onPostButtonStream.onNext({ event in
-////            PostRepository.postText(text: event)
-////        })
-//    }
 }
 
 extension PostViewModel: PostViewModelType {
