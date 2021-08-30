@@ -36,17 +36,15 @@ class PostViewController: UIViewController, StoryboardInstantiatable {
 //                self?.postViewModel.postpostText()
 //            }).disposed(by: disposeBag)
         
+        // ストリームに返すためにObservableのインスタンスを作って返ってきた型を<>で返す（もしくはシングル）
+        // シングルだと都度都度subscribe
+        // flatmapでRepositoryを呼ぶ
+        // SuccessかErrorが返る
+        // コールバックではなくストリーム
         postButton.rx.tap
             .subscribe(onNext: { [postViewModel] in
                 postViewModel?.inputs.onPostButton
             }).disposed(by: disposeBag)
         
-//
-//        
-//        textSubject
-//            .map { $0 }
-//            .bind(to: postButton.rx.isEnabled)
-//            .subscribe(onNext)
-////            .disposed(by: disposeBag)
     }
 }
