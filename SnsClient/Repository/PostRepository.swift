@@ -34,6 +34,7 @@ extension PostRepository {
                 if let unwrappedResponse = response {
                     print(unwrappedResponse)
                 } else {
+                    // 投稿が成功してもここが呼ばれる
                     print("エラー")
                 }
             }, onError: { error in

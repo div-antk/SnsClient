@@ -39,6 +39,8 @@ class PostViewModel: PostViewModelInputs, PostViewModelOutputs {
     private let disposeBag = DisposeBag()
     private let provider = MoyaProvider<SnsAPI>()
     
+    // classのプロパティの初期値を設定する
+    // このクラスのインスタンスを生成する際に自動で呼び出される
     init() {
         let _posts = PublishRelay<[Text]>()
         self.posts = _posts.asObservable()
