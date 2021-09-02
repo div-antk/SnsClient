@@ -37,9 +37,7 @@ class PostViewController: UIViewController, StoryboardInstantiatable {
         // SuccessかErrorが返る
         // コールバックではなくストリーム
         postButton.rx.tap
-            .subscribe(onNext: { [postViewModel] in
-                postViewModel?.inputs.onPostButton
-            }).disposed(by: disposeBag)
-        
+            .bind(to: postViewModel.inputs.onPostButton)
+            .disposed(by: disposeBag)
     }
 }
