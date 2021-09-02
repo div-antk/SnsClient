@@ -53,15 +53,20 @@ class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
             })
             .disposed(by: disposeBag)
         
-        let onPostButton = PublishRelay<Void>()
-        self.onPostButton = AnyObserver<Void>() {_ in 
-            return
+        let _onPostButton = PublishRelay<Void>()
+        self.onPostButton = AnyObserver<Void>() { event in
+            guard let event = event.element else { return }
+            // 流れてきたイベントを留めておく
+            _onPostButton.accept(event)
         }
-        onPostButton.withLatestFrom(_postText)
+        
+        // textのPublishRelayとbuttonのPublishRelayを流す
+        // .mapを使うとバリデーションの処理などを挟んだりできる
+        _onPostButton.withLatestFrom(_postText)
             .subscribe(onNext: { text in
-                PostRepository.postText(text: text)
+                print(text)
+                // PostRepository.postText(text: text)
             }).disposed(by: disposeBag)
-       
     }
 }
 
