@@ -10,7 +10,9 @@ import RxSwift
 import RxCocoa
 import Moya
 
+// プロトコルを適用したクラスや構造体は、プロトコルに定義されているメソッド、プロパティを必ず実装しなければならない
 protocol PostViewModelInputs {
+    // getは読み込み専用プロパティを意味する
     var postText: AnyObserver<String> { get }
     var onPostButton: AnyObserver<Void> { get }
 }
@@ -24,7 +26,7 @@ protocol PostViewModelType {
     var output: PostViewModelOutputs { get }
 }
 
-class PostViewModel: PostViewModelOutputs, PostViewModelInputs {
+class PostViewModel: PostViewModelInputs, PostViewModelOutputs {
     
     // MARK: input
     let postText: AnyObserver<String>
