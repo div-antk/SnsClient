@@ -10,6 +10,7 @@ import Foundation
 public struct Text: Codable {
     let text: String
     let _created_at: String
+    let _user_id: String
 }
 
 //public struct PostText: Codable {

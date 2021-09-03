@@ -76,7 +76,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.reusableIdentifier, for: indexPath) as! PostTableViewCell
+        
         cell.postLabel?.text = posts?[indexPath.row].text
+        
+        cell.nameLabel?.text = posts?[indexPath.row]._user_id
         
         if let createdAt = posts?[indexPath.row]._created_at {
             let date = DateUtil.dateFromString(string: createdAt)
