@@ -9,8 +9,10 @@ import Foundation
 import Moya
 
 enum SnsAPI {
-    case all
+    case allText
+    case user(id: String)
     case postText(text: String)
+    
 }
 
 extension SnsAPI: TargetType {
@@ -21,8 +23,10 @@ extension SnsAPI: TargetType {
     
     var path: String {
         switch self {
-        case .all:
+        case .allText:
             return "/text/all"
+        case .user(let id):
+            return "/user/\(id)"
         case .postText:
             return "/text"
         }
@@ -30,7 +34,7 @@ extension SnsAPI: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .all:
+        case .allText, .user:
             return .get
         case .postText:
             return .post
@@ -43,7 +47,7 @@ extension SnsAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .all:
+        case .allText, .user:
             return .requestPlain
         case .postText(let text):
             let jsonData = try! JSONSerialization.data(withJSONObject: [
