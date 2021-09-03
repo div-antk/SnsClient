@@ -23,6 +23,7 @@
 		3B542F2226A705E500BFFE6F /* SnsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B542F2126A705E400BFFE6F /* SnsAPI.swift */; };
 		3B542F2626A70BB800BFFE6F /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B542F2526A70BB700BFFE6F /* PostRepository.swift */; };
 		3B5B51DA26E2584C0024BFDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B51D926E2584C0024BFDA /* User.swift */; };
+		3B5B51DE26E25EAA0024BFDA /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B51DD26E25EAA0024BFDA /* UserRepository.swift */; };
 		3B5E9C0126B96EBD00E8169A /* PostText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E9C0026B96EBC00E8169A /* PostText.swift */; };
 		3BC4045726B191E600AC9D87 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4045626B191E600AC9D87 /* PostViewController.swift */; };
 		3BC4045A26B1920400AC9D87 /* PostViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC4045926B1920400AC9D87 /* PostViewController.storyboard */; };
@@ -48,6 +49,7 @@
 		3B542F2126A705E400BFFE6F /* SnsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsAPI.swift; sourceTree = "<group>"; };
 		3B542F2526A70BB700BFFE6F /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
 		3B5B51D926E2584C0024BFDA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3B5B51DD26E25EAA0024BFDA /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		3B5E9C0026B96EBC00E8169A /* PostText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostText.swift; sourceTree = "<group>"; };
 		3BC4045626B191E600AC9D87 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		3BC4045926B1920400AC9D87 /* PostViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostViewController.storyboard; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				3B542F2526A70BB700BFFE6F /* PostRepository.swift */,
+				3B5B51DD26E25EAA0024BFDA /* UserRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				3B542EEF26A5B06400BFFE6F /* AppDelegate.swift in Sources */,
 				3B25465A26AA930B00963E55 /* DateUtil.swift in Sources */,
 				3B542EF126A5B06400BFFE6F /* SceneDelegate.swift in Sources */,
+				3B5B51DE26E25EAA0024BFDA /* UserRepository.swift in Sources */,
 				3B2AE1C626ADA57900CA4247 /* TabBarController.swift in Sources */,
 				3B542F2226A705E500BFFE6F /* SnsAPI.swift in Sources */,
 				3BC4045726B191E600AC9D87 /* PostViewController.swift in Sources */,
