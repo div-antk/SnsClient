@@ -13,6 +13,3 @@ public struct Text: Codable {
     let _user_id: String
 }
 
-//public struct PostText: Codable {
-//    let postText(text: String)
-//}
