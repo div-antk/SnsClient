@@ -17,7 +17,7 @@ final class PostRepository {
 extension PostRepository {
     
     static func getAllPosts() -> Observable<[Text]> {
-        return apiProvider.rx.request(.all)
+        return apiProvider.rx.request(.allText)
             .map { response in
                 print(response)
                 let decoder = JSONDecoder()

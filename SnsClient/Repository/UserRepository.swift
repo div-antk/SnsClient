@@ -19,7 +19,7 @@ extension UserRepository {
     static func getUser(id: String) -> Observable<[User]> {
         return apiProvider.rx.request(.user(id: id))
             .map { response in
-                print(response)
+                print(response.response?.url)
                 let decoder = JSONDecoder()
                 return try decoder.decode([User].self, from: response.data)
             }.asObservable()

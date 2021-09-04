@@ -20,6 +20,7 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
     private var postViewModel: PostViewModel!
     
     private var posts: [Text]?
+    private var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.reusableIdentifier, for: indexPath) as! PostTableViewCell
         
         cell.postLabel?.text = posts?[indexPath.row].text
+        
+        var user = UserRepository.getUser(id: posts?[indexPath.row]._user_id ?? "")
         
         cell.nameLabel?.text = posts?[indexPath.row]._user_id
         
