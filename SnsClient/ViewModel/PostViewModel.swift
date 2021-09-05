@@ -14,11 +14,13 @@ import Moya
 protocol PostViewModelInputs {
     // getは読み込み専用プロパティを意味する
     var postText: AnyObserver<String> { get }
+    var userId: AnyObserver<String> { get }
     var onPostButton: AnyObserver<Void> { get }
 }
 
 protocol PostViewModelOutputs {
     var posts: Observable<[Text]> { get }
+    var user: Observable<[User]> { get }
 }
 
 protocol PostViewModelType {
@@ -30,10 +32,12 @@ class PostViewModel: PostViewModelInputs, PostViewModelOutputs {
     
     // MARK: input
     let postText: AnyObserver<String>
+    var userId: AnyObserver<String>
     let onPostButton: AnyObserver<Void>
         
     // MARK: output
     let posts: Observable<[Text]>
+    var user: Observable<[User]>
     
     // MARK: other
     private let disposeBag = DisposeBag()
@@ -56,6 +60,24 @@ class PostViewModel: PostViewModelInputs, PostViewModelOutputs {
                 _posts.accept(response)
             })
             .disposed(by: disposeBag)
+        
+        let _user = PublishRelay<[User]>()
+        self.user = _user.asObservable()
+        
+        let _userId = PublishRelay<String>()
+        self.userId = AnyObserver<String>() { event in
+            guard let id = event.element else { return }
+            _userId.accept(id)
+        }
+        
+        // ユーザー情報を取得
+        _userId.flatMap { userId in
+            UserRepository.getUser(id: userId)
+        }
+        .subscribe(onNext: { response in
+            _user.accept(response)
+        })
+        .disposed(by: disposeBag)
         
         let _onPostButton = PublishRelay<Void>()
         self.onPostButton = AnyObserver<Void>() { event in
