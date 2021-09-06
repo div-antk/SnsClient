@@ -20,7 +20,7 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
     private var postViewModel: PostViewModel!
     
     private var posts: [Text]?
-    private var user: User?
+    private var user: [User]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +66,19 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
                 self?.tableView.reloadData()
             }.disposed(by: disposeBag)
     }
+    
+    func getUserData(id: String) {
+        
+        postViewModel = PostViewModel()
+        
+        postViewModel.inputs.userId.asObserver()
+        
+        postViewModel.output.user
+            .asObservable().subscribe { [weak self] in
+                self?.user = $0.element
+                self?.tableView.reloadData()
+            }.disposed(by: disposeBag)
+    }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -80,7 +93,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.postLabel?.text = posts?[indexPath.row].text
         
-        var user = UserRepository.getUser(id: posts?[indexPath.row]._user_id ?? "")
+
         
         cell.nameLabel?.text = posts?[indexPath.row]._user_id
         
