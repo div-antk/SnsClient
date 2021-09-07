@@ -20,7 +20,7 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
     private var postViewModel: PostViewModel!
     
     private var posts: [Text]?
-    private var user: [User]?
+    private var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,16 +68,20 @@ class MainViewController: UIViewController, StoryboardInstantiatable {
     }
     
     func getUserData(id: String) {
-        
+
+//        user = UserRepository.getUser(id: id)
         postViewModel = PostViewModel()
+
+//        postViewModel.inputs.userId.asObserver()
+
+        postViewModel.inputs.userId.asObserver().onNext(id)
+            
         
-        postViewModel.inputs.userId.asObserver()
-        
-        postViewModel.output.user
-            .asObservable().subscribe { [weak self] in
-                self?.user = $0.element
-                self?.tableView.reloadData()
-            }.disposed(by: disposeBag)
+//        postViewModel.output.user
+//            .asObservable().subscribe { [weak self] in
+//                self?.user = $0.element
+//                self?.tableView.reloadData()
+//            }.disposed(by: disposeBag)
     }
 }
 
@@ -93,9 +97,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.postLabel?.text = posts?[indexPath.row].text
         
-
         
-        cell.nameLabel?.text = posts?[indexPath.row]._user_id
+        getUserData(id: posts?[indexPath.row]._user_id ?? "")
         
         if let createdAt = posts?[indexPath.row]._created_at {
             let date = DateUtil.dateFromString(string: createdAt)

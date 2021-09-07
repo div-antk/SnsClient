@@ -16,12 +16,12 @@ final class UserRepository {
 
 extension UserRepository {
     
-    static func getUser(id: String) -> Observable<[User]> {
+    static func getUser(id: String) -> Observable<User> {
         return apiProvider.rx.request(.user(id: id))
             .map { response in
-                print(response.response?.url)
+                print("(´・ω・｀)", response.response?.url)
                 let decoder = JSONDecoder()
-                return try decoder.decode([User].self, from: response.data)
+                return try decoder.decode(User.self, from: response.data)
             }.asObservable()
     }
 }

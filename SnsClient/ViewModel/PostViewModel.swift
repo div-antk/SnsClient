@@ -20,7 +20,7 @@ protocol PostViewModelInputs {
 
 protocol PostViewModelOutputs {
     var posts: Observable<[Text]> { get }
-    var user: Observable<[User]> { get }
+    var user: Observable<User> { get }
 }
 
 protocol PostViewModelType {
@@ -37,7 +37,7 @@ class PostViewModel: PostViewModelInputs, PostViewModelOutputs {
         
     // MARK: output
     let posts: Observable<[Text]>
-    var user: Observable<[User]>
+    var user: Observable<User>
     
     // MARK: other
     private let disposeBag = DisposeBag()
@@ -61,7 +61,7 @@ class PostViewModel: PostViewModelInputs, PostViewModelOutputs {
             })
             .disposed(by: disposeBag)
         
-        let _user = PublishRelay<[User]>()
+        let _user = PublishRelay<User>()
         self.user = _user.asObservable()
         
         let _userId = PublishRelay<String>()

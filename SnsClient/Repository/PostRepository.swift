@@ -19,7 +19,6 @@ extension PostRepository {
     static func getAllPosts() -> Observable<[Text]> {
         return apiProvider.rx.request(.allText)
             .map { response in
-                print(response)
                 let decoder = JSONDecoder()
                 return try decoder.decode([Text].self, from: response.data)
             }.asObservable()
