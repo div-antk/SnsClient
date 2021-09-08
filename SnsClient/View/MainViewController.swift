@@ -97,8 +97,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.postLabel?.text = posts?[indexPath.row].text
         
-        
-        getUserData(id: posts?[indexPath.row]._user_id ?? "")
+        if let id = posts?[indexPath.row]._user_id {
+            getUserData(id: id)
+        }
         
         if let createdAt = posts?[indexPath.row]._created_at {
             let date = DateUtil.dateFromString(string: createdAt)
