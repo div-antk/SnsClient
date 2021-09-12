@@ -20,12 +20,11 @@ extension PostRepository {
         return apiProvider.rx.request(.allText)
             .map { response in
                 let decoder = JSONDecoder()
-                try decoder.decode([UserModel].self, from: response.data)
-//                { data in
-//                    data.map { textData -> Observable<User> in
-//                        UserRepository.getUser(id: textData._user_id)
-//                    }
-//                }
+                let data = try decoder.decode([UserModel].self, from: response.data) ([UserModel.User])  { item in
+                    item.map { textData -> Observable<[UserModel.User]> in
+                        UserRepository.getUser(id: item._user_id)
+                    }
+                }
             }.asObservable()
     }
     // map item.id
