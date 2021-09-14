@@ -11,13 +11,11 @@ public struct UserModel: Codable {
     let text: String
     let _created_at: String
     let _user_id: String
-    let User: User
-    
-    public struct User: Codable {
-        let id: String
-        let description: String
-        let name: String
-    }
+    let user: User
 }
-
-
+//
+//public struct User: Codable {
+//    let id: String
+//    let description: String
+//    let name: String
+//}

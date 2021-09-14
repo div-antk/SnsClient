@@ -16,11 +16,11 @@ final class PostRepository {
 
 extension PostRepository {
     
-    static func getAllPosts() -> Observable<[UserModel]> {
+    static func getAllPosts() -> Observable<[Text]> {
         return apiProvider.rx.request(.allText)
             .map { response in
                 let decoder = JSONDecoder()
-                return try decoder.decode([UserModel].self, from: response.data)
+                return try decoder.decode([Text].self, from: response.data)
             }.asObservable()
     }
     // map item.id
